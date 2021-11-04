@@ -60,20 +60,12 @@ stat <- data.frame(Station = c("SS1", "SS2", "SS3", "SS4", "SS5", "SS6", "SS7", 
                    Latitude = c(33.4697739, 33.4766202, 33.4834556, 33.4902637, 33.4964727, 33.4971163, 33.4909537,33.4659915, 33.4622206, 33.4407619, 33.44251),
                    Longitude = c(-116.0254881, -116.032482, -116.0394782, -116.0464692,-116.0459624,  -116.0535395, -116.0541673, -116.0351766, -116.0450425, -116.0439693, -116.04197))
 
-#merge locations with data, make parameter vector, title vector, units vector, and define color vector for map plots
+#merge locations with data
 d.all <- stat %>% 
   left_join(., d.ysi.2, by = "Station") %>% 
   left_join(., d.photo.2, by = "Station") 
 
-parameters <- colnames(d.all)[-3:-1]
-names(parameters) <- c("Salinity", "Water Temperature", "pH", "Turbidity", "Dissolved Oxygen", "Chlorophyll", "Phycoerythrin", "Nitrate", "Ammonia", "Phosphate", "Sulphate", "Sulphide")
 
-titles <- c("Salinity", "Water Temperature", "pH", "Turbidity", "Dissolved Oxygen", "Chlorophyll", "Phycoerythrin", "Nitrate", "Ammonia", "Phosphate", "Sulphate", "Sulphide")
-names(titles) <- colnames(d.all)[-3:-1]
-
-units <- c("PSU", "°C", "", "FNU", "mg/L", rep("µg/L",2), rep("mg/L",5))
-names(units) <- colnames(d.all)[-3:-1]
-
-save(d.ysi, d.photo, d.all, titles, units, colors, parameters, file = "data/data.Rdata")
+save(d.ysi, d.photo, d.all, file = "data/data.Rdata")
 
 
