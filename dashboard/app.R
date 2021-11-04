@@ -11,7 +11,7 @@ suppressWarnings(source("data_cleaner.R"))
 #position of site labels
 nudge <- c(rep(0.03,4),0,0,0,0.03,0.03,0.01, 0.03)
 #Set your API Key to call map from google
-ggmap::register_google(key = "AIzaSyA-US0xjpp6-mru0kgOHDSF2eUOHgGsJGI")
+ggmap::register_google(key = "")
 
 # Load data ---------------------------------------------------------
 load("data/data.Rdata")
